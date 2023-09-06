@@ -1,0 +1,26 @@
+{
+  "name": "minipoint",
+  "version": "0.0.0",
+  "description": "Play with points and learn the math behind everything",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/himanshurajora/minipoint.git"
+  },
+  "keywords": [
+    "graphics",
+    "canvas",
+    "points",
+    "math"
+  ],
+  "author": "Himanshu Jangid <himanshujhar@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/himanshurajora/minipoint/issues"
+  },
+  "homepage": "https://github.com/himanshurajora/minipoint#readme",
+  "dependencies": {}
+}
