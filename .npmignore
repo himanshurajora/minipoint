@@ -4,3 +4,7 @@ node_modules
 .nvmrc
 test
 jest.config.ts
+.github
+.vscode
+docs
+readme.md
