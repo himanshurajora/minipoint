@@ -1,4 +1,4 @@
-import { Engine, createCanvas } from 'minipoint';
+import { Engine, createCanvas } from '../../lib';
 
 const { canvas } = createCanvas();
 const engine = new Engine(canvas);
