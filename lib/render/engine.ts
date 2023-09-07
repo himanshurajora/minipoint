@@ -1,9 +1,13 @@
+import { Renderer } from './renderer';
+
 /**
  * The main rendering engine that container canvas, context and all of the configuration
  */
 export class Engine {
   canvas: HTMLCanvasElement;
   context: CanvasRenderingContext2D | null;
+  renderer: Renderer;
+
   constructor(
     canvasElement: HTMLCanvasElement | null,
     options?: {
@@ -25,6 +29,8 @@ export class Engine {
         "Couldn't find the context, the value might be null or undefined",
       );
     }
+
+    this.renderer = new Renderer(this.context);
   }
 
   get currentContext(): CanvasRenderingContext2D | null {

@@ -2,7 +2,7 @@
   "name": "minipoint",
   "version": "0.0.0",
   "description": "Play with points and learn the math behind everything",
-  "main": "dist/index.js",
+  "main": "lib/index.ts",
   "scripts": {
     "test": "jest",
     "dev": "tsc --watch",

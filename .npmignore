@@ -1,0 +1,6 @@
+examples
+node_modules
+.prettierrc
+.nvmrc
+test
+jest.config.ts
