@@ -1,23 +1,24 @@
-import { PointOptions, RendererInterface } from '../types';
+import { forEach } from 'lodash';
 import { DefaultPointOptions } from '../constants';
+import { BaseRenderer, PointOptions } from '../types';
+import { Point } from './objects';
 /**
  * The class that is responsible for drawing
  */
-export class Renderer implements RendererInterface {
-  context: CanvasRenderingContext2D;
+export class Renderer extends BaseRenderer {
   constructor(context: CanvasRenderingContext2D) {
-    this.context = context;
+    super(context);
   }
 
-  drawPoint(options?: PointOptions) {
-    options = {
-      ...DefaultPointOptions,
-      ...options,
-    };
+  render() {
+    forEach(this.objects, (object) => {
+      object.checkDrawConditionAndDraw();
+    });
+  }
 
-    this.context.beginPath();
-    // @ts-ignore
-    this.context.arc(options.x, options.y, options.radius, 0, Math.PI * 2);
-    this.context.fill();
+  point(options: PointOptions = DefaultPointOptions) {
+    const point = new Point(options, this);
+    this.objects.push(point);
+    return point;
   }
 }

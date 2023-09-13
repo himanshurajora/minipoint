@@ -30,7 +30,19 @@ export class Engine {
       );
     }
 
+    const render = () => {
+      this.renderer.render();
+      requestAnimationFrame(render);
+    };
+
     this.renderer = new Renderer(this.context);
+    requestAnimationFrame(render);
+
+    // Set useful options to window
+    // INFO: Make sure whenever new Engine is created it will overwrite the default
+    // renderer and engine in the global scope
+    window.MiniPointDefaultEngine = this;
+    window.MiniPointDefaultRenderer = this.renderer;
   }
 
   get currentContext(): CanvasRenderingContext2D | null {

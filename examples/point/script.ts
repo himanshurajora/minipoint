@@ -1,8 +1,11 @@
-import { Engine, createCanvas } from '../../lib';
+import { Engine, createCanvas, Point } from '../../lib';
 
 const { canvas } = createCanvas();
 const engine = new Engine(canvas);
-
 const renderer = engine.renderer;
 
-renderer.drawPoint({ x: 100, y: 100 });
+for (let i = 0; i < 100; i++) {
+  renderer.addObject(
+    new Point({ x: Math.random() * 400, y: Math.random() * 400 }),
+  );
+}
