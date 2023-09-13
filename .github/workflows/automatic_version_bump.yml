@@ -2,8 +2,7 @@ name: Node.js - Bump version on release
 
 on:
   release:
-    types:
-      - published
+    types: [created]
 
 jobs:
   bump-version:
