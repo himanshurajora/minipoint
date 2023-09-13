@@ -35,7 +35,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: cd examples && npm ci
+      - run: npm install && cd examples && npm install
       - run: cd examples && npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
