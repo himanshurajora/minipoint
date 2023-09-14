@@ -10,12 +10,16 @@ export class Point extends BaseObject<PointOptions, Point> {
     options: PointOptions = DefaultPointOptions,
     renderer?: Renderer,
   ) {
-    options = { ...DefaultPointOptions, ...options };
+    // base class will de
+    options = {
+      ...DefaultPointOptions,
+      ...options,
+    };
+
     super(options, renderer);
   }
 
   draw() {
-    if (!this.options.show) return this;
     this.context.beginPath();
     this.context.arc(
       this.options.x,

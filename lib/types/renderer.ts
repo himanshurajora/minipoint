@@ -18,9 +18,4 @@ export abstract class BaseRenderer {
     this.objects = [];
   }
   abstract render(): void;
-
-  addObject<T>(object: T): T {
-    this.objects.push(object as BaseObjectInterface<T>);
-    return object;
-  }
 }
