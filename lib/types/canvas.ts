@@ -12,3 +12,13 @@ export type CanvasOptions = {
    */
   height: number;
 };
+
+export type EngineOptions = {
+  contextOptions: CanvasRenderingContext2DSettings;
+  // TODO: not yet decided
+  engineOptions: {
+    clearEachFrame: boolean;
+    border: string;
+    bg: string;
+  };
+};

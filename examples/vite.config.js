@@ -8,6 +8,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         point: resolve(__dirname, 'point/index.html'),
+        drawing: resolve(__dirname, 'drawing/index.html'),
       },
     },
   },

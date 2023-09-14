@@ -1,3 +1,5 @@
+import { Renderer } from '../render/renderer';
+
 export interface BaseObjectInterface<T = unknown> {
   // draw: () => T;
   checkDrawConditionAndDraw: () => T;
@@ -5,6 +7,7 @@ export interface BaseObjectInterface<T = unknown> {
    * A Unique Id that will help us identify each object in the Engine
    */
   id?: string;
+  renderer: Renderer;
 }
 
 export type DrawableObjectOptions<T = unknown> = T & {
