@@ -18,3 +18,12 @@ Core:
 
 CoreWithTests:
 - all: ['lib/core/**', 'test/**']
+
+Actions:
+- '.github/**'
+
+Docs:
+- 'Docs/**'
+
+Types:
+- 'lib/types/**'
