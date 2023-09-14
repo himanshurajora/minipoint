@@ -1,0 +1,20 @@
+Examples:
+- 'example/**'
+
+Library:
+- 'lib/**'
+
+ReadMe:
+- 'readme.md'
+
+CodeEditor:
+- '.vscode/**'
+
+Tests:
+- any: ['test/**', '**/*.test.ts', '**/*.test.js']
+
+Core:
+- 'lib/core/**'
+
+CoreWithTests:
+- all: ['lib/core/**', 'test/**']
