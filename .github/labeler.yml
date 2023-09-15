@@ -27,3 +27,6 @@ Docs:
 
 Types:
 - 'lib/types/**'
+
+Examples:
+- 'examples/**'
