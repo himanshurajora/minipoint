@@ -28,7 +28,7 @@ export class Point extends BaseObject<PointOptions, Point> {
       0,
       Math.PI * 2,
     );
-
+    if (this.options.color) this.context.fillStyle = this.options.color;
     this.context.fill();
     return this;
   }

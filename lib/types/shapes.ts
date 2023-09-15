@@ -20,5 +20,6 @@ export type DrawableObjectOptions<T = unknown> = T & {
 export type PointOptions = DrawableObjectOptions<{
   x: number;
   y: number;
+  color?: string;
   radius?: number;
 }>;
