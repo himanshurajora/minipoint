@@ -7,11 +7,6 @@ const renderer = engine.renderer;
 
 const canvasX = engine.canvas.getBoundingClientRect().x;
 const canvasY = engine.canvas.getBoundingClientRect().y;
-let maxAmount = 100;
-
-document.getElementById('max')?.addEventListener('change', (e) => {
-  maxAmount = +(e.target as HTMLInputElement).value;
-});
 
 window.addEventListener('click', (e: MouseEvent) => {
   const p1 = new Point();
@@ -24,5 +19,3 @@ window.addEventListener('click', (e: MouseEvent) => {
 
   renderer.addObject(p1);
 });
-
-console.log(renderer.objects);
