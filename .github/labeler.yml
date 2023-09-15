@@ -1,5 +1,5 @@
 Examples:
-- 'example/**'
+- 'examples/**'
 
 Library:
 - 'lib/**'
@@ -27,6 +27,3 @@ Docs:
 
 Types:
 - 'lib/types/**'
-
-Examples:
-- 'examples/**'
