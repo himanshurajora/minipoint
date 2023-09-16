@@ -10,6 +10,7 @@ export default defineConfig({
         point: resolve(__dirname, 'point/index.html'),
         drawing: resolve(__dirname, 'drawing/index.html'),
         colors: resolve(__dirname, 'colors/index.html'),
+        colors: resolve(__dirname, 'mouse-inputs/index.html'),
       },
     },
   },
