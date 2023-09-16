@@ -11,6 +11,8 @@
 
 A 2d Graphics Library spatially for Points/Vectors.
 
+<a href="https://www.buymeacoffee.com/himanshurajora" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
 ## Build Stats
 
 [![Node.js CI](https://github.com/himanshurajora/minipoint/actions/workflows/node.js.yml/badge.svg)](https://github.com/himanshurajora/minipoint/actions/workflows/node.js.yml)
