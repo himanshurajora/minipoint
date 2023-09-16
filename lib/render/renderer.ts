@@ -12,7 +12,6 @@ export class Renderer extends BaseRenderer {
 
   render() {
     forEach(this.objects, (object) => {
-      // @ts-ignore
       object.checkDrawConditionAndDraw();
     });
   }

@@ -1,4 +1,7 @@
+import { createCanvas } from '../common';
 import { DefaultEngineOptions } from '../constants';
+import { Input } from '../input';
+import { Vector } from '../physics';
 import { EngineOptions } from '../types';
 import { Renderer } from './renderer';
 
@@ -11,13 +14,31 @@ export class Engine {
   renderer: Renderer;
   width: number;
   height: number;
-  x: number;
-  y: number;
+  position: Vector = new Vector(0, 0);
+  options: EngineOptions;
+  input: Input;
 
   constructor(
-    canvasElement: HTMLCanvasElement | null,
+    canvasElement?: HTMLCanvasElement | null,
     options: EngineOptions = DefaultEngineOptions,
   ) {
+    options = {
+      contextOptions: {
+        ...DefaultEngineOptions.contextOptions,
+        ...options.contextOptions,
+      },
+      engineOptions: {
+        ...DefaultEngineOptions.engineOptions,
+        ...options.engineOptions,
+      },
+    };
+    this.options = options;
+    // NOTE: even if the canvas is not given, we'll create it ourself
+    if (!canvasElement) {
+      const { canvas } = createCanvas();
+      canvasElement = canvas;
+    }
+
     if (!canvasElement) {
       throw Error(
         "Couldn't find the canvas, the value might be null or undefined",
@@ -29,25 +50,38 @@ export class Engine {
       '2d',
       options?.contextOptions,
     ) as CanvasRenderingContext2D;
-    this.x = this.canvas.getBoundingClientRect().x;
-    this.y = this.canvas.getBoundingClientRect().y;
+    const { x, y } = this.canvas.getBoundingClientRect();
+
+    // even if the windows is scrolled initially, we want to make sure that
+    // the initial position is calculated based on scrolled window.
+    // otherwise, the position may be unexpected
+    this.position = new Vector(x - window.scrollX, y - -window.scrollY);
+    console.log(this.position);
     this.width = this.canvas.width;
     this.height = this.canvas.height;
-    this.canvas.style.border = options.engineOptions.border;
-    this.canvas.style.background = options.engineOptions.bg;
-    this.canvas.width = options.engineOptions.width;
-    this.canvas.height = options.engineOptions.height;
+    this.canvas.style.border = options.engineOptions!.border!;
+    this.canvas.style.background = options.engineOptions!.bg!;
+    this.canvas.style.width = options.engineOptions!.width!.toString() + 'px';
+    this.canvas.style.height = options.engineOptions!.height!.toString() + 'px';
+    this.canvas.width = options.engineOptions!.width!;
+    this.canvas.height = options.engineOptions!.height!;
+
     if (!this.context) {
       throw Error(
         "Couldn't find the context, the value might be null or undefined",
       );
     }
 
+    this.input = new Input(this);
+    this.start();
+
     const render = () => {
-      if (options.engineOptions.clearEachFrame) {
+      this.update();
+      if (options.engineOptions!.clearEachFrame) {
         this.context?.clearRect(0, 0, this.width, this.height);
       }
       this.renderer.render();
+      this.resetEvent();
       requestAnimationFrame(render);
     };
 
@@ -61,11 +95,13 @@ export class Engine {
     window.MiniPointDefaultRenderer = this.renderer;
   }
 
-  get currentContext(): CanvasRenderingContext2D | null {
-    return this.context;
-  }
+  // two methods that can be overridden
+  start() {}
+  update() {}
 
-  set currentContext(context: CanvasRenderingContext2D) {
-    this.context = context;
+  // reset single frame events
+  resetEvent() {
+    this.input.mouse.click = false;
+    this.input.mouse.move = false;
   }
 }

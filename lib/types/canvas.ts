@@ -16,11 +16,11 @@ export type CanvasOptions = {
 export type EngineOptions = {
   contextOptions?: CanvasRenderingContext2DSettings;
   // TODO: not yet decided
-  engineOptions: {
-    clearEachFrame: boolean;
-    border: string;
-    bg: string;
-    width: number;
-    height: number;
+  engineOptions?: {
+    clearEachFrame?: boolean;
+    border?: string;
+    bg?: string;
+    width?: number;
+    height?: number;
   };
 };

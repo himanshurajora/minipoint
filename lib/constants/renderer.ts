@@ -1,4 +1,4 @@
-import { DrawableObjectOptions, EngineOptions, PointOptions } from '../types';
+import { DrawableObjectOptions, PointOptions } from '../types';
 
 export const DefaultDrawableObjectOptions: DrawableObjectOptions = {
   show: true,
@@ -17,7 +17,7 @@ export const DefaultCanvasOptions = {
   height: 600,
 };
 
-export const DefaultEngineOptions: EngineOptions = {
+export const DefaultEngineOptions = {
   engineOptions: {
     clearEachFrame: true,
     border: '1px solid black',

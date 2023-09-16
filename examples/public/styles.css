@@ -8,6 +8,16 @@ input {
     margin: 10px;
 }
 
+.main-area {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.hljs-copy-wrapper {
+  margin-top: 0px;
+}
+
 /*
 
 Atom One Dark by Daniel Gamage
