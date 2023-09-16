@@ -4,6 +4,8 @@ name: Test build of static website
 on:
   # Runs on pushes targeting the default branch
   pull_request:
+    paths:
+      - 'examples/**' 
 
 jobs:
   # Single deploy job since we're just deploying
