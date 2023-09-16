@@ -51,7 +51,6 @@ export class MouseInput {
         engine,
       );
       this.click = true;
-      console.log(window.scrollX, window.scrollY);
     });
   }
 

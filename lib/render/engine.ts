@@ -56,7 +56,6 @@ export class Engine {
     // the initial position is calculated based on scrolled window.
     // otherwise, the position may be unexpected
     this.position = new Vector(x - window.scrollX, y - -window.scrollY);
-    console.log(this.position);
     this.width = this.canvas.width;
     this.height = this.canvas.height;
     this.canvas.style.border = options.engineOptions!.border!;
