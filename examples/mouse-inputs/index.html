@@ -27,38 +27,45 @@
   </head>
   <body>
     <div id="app">
-      Click to put a random color
+      Various Mouse Input Examples
       <br />
       <label for="max">Max Points: </label>
       <input type="number" name="max" id="max" value="100" />
     </div>
-    <canvas id="canvas"></canvas>
-    <br />
-    Source Code:
-    <pre><code class="language-javascript">
-      import { Engine, Point } from '../../lib';
+    <div class="main-area">
+      <canvas id="canvas"></canvas>
+      <pre><code class="language-javascript">
+        import { Engine, Point } from '../../lib';
 
-      const engine = new Engine(
-        document.getElementById('canvas') as HTMLCanvasElement,
-      );
-      const renderer = engine.renderer;
-      
-      const canvasX = engine.canvas.getBoundingClientRect().x;
-      const canvasY = engine.canvas.getBoundingClientRect().y;
-      
-      window.addEventListener('click', (e: MouseEvent) => {
-        const p1 = new Point();
-        p1.options.x = e.clientX - canvasX;
-        p1.options.y = e.clientY - canvasY;
-        p1.options.radius = 6;
-        p1.options.color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${
-          Math.random() * 255
-        })`;
-      
-        renderer.addObject(p1);
-      });
-      
-    </code></pre>
+        const engine = new Engine(
+          document.getElementById('canvas') as HTMLCanvasElement,
+          {
+            engineOptions: {
+              width: 600,
+              height: 400,
+            },
+          },
+        );
+
+        const { renderer, input } = engine;
+
+        engine.update = () => {
+          if (input.mouse.click) {
+            const p1 = new Point({
+              x: input.mouse.position.x,
+              y: input.mouse.position.y,
+              radius: 6,
+              color: `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${
+                Math.random() * 255
+              })`,
+            });
+
+            renderer.addObject(p1);
+          }
+        };
+
+      </code></pre>
+    </div>
     <script type="module" src="./script.ts"></script>
   </body>
 </html>

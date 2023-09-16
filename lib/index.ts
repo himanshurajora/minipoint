@@ -1,8 +1,9 @@
 import { MINIPOINT_LOGO } from './render';
 
+export * from './physics';
 export * from './render';
 export * from './common';
-
+export * from './input';
 // Simple things
 import * as MiniPoint from '.';
 console.log("%cWelcome! to minipoint. Let's Play...", 'color: green');
