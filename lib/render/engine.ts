@@ -72,10 +72,10 @@ export class Engine {
     }
 
     this.input = new Input(this);
-    this.start();
+    this.start(this);
 
     const render = () => {
-      this.update();
+      this.update(this);
       if (options.engineOptions!.clearEachFrame) {
         this.context?.clearRect(0, 0, this.width, this.height);
       }
@@ -84,7 +84,7 @@ export class Engine {
       requestAnimationFrame(render);
     };
 
-    this.renderer = new Renderer(this.context);
+    this.renderer = new Renderer(this);
     render();
 
     // Set useful options to window
@@ -94,9 +94,8 @@ export class Engine {
     window.MiniPointDefaultRenderer = this.renderer;
   }
 
-  // two methods that can be overridden
-  start() {}
-  update() {}
+  update: (engine: Engine) => void = (_engine: Engine) => {};
+  start: (engine: Engine) => void = (_engine: Engine) => {};
 
   // reset single frame events
   resetEvent() {

@@ -2,12 +2,19 @@ import { forEach } from 'lodash';
 import { DefaultPointOptions } from '../constants';
 import { BaseObjectInterface, BaseRenderer, PointOptions } from '../types';
 import { Point } from './objects';
+import { Engine } from './engine';
 /**
  * The class that is responsible for drawing
  */
 export class Renderer extends BaseRenderer {
-  constructor(context: CanvasRenderingContext2D) {
-    super(context);
+  engine: Engine;
+  constructor(engine: Engine) {
+    if (!engine.context)
+      throw new Error(
+        "Context wan't found while initializing renderer, please check your code",
+      );
+    super(engine.context);
+    this.engine = engine;
   }
 
   render() {

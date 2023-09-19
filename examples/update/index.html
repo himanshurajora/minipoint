@@ -26,38 +26,45 @@
     <title>MiniPoint Colors</title>
   </head>
   <body>
-    <div id="app">Mouse Click Event Examples</div>
+    <div id="app">Single Objects also have their own update method</div>
     <div class="main-area">
       <canvas id="canvas"></canvas>
       <pre><code class="language-javascript">
         import { Engine, Point } from '../../lib';
 
-        const engine = new Engine(
-          document.getElementById('canvas') as HTMLCanvasElement,
-          {
-            engineOptions: {
-              width: 600,
-              height: 400,
-            },
-          },
-        );
+const engine = new Engine(
+  document.getElementById('canvas') as HTMLCanvasElement,
+  {
+    engineOptions: {
+      width: 600,
+      height: 400,
+    },
+  },
+);
 
-        const { renderer, input } = engine;
+const { renderer, input } = engine;
 
-        engine.update = () => {
-          if (input.mouse.click) {
-            const p1 = new Point({
-              x: input.mouse.position.x,
-              y: input.mouse.position.y,
-              radius: 6,
-              color: `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${
-                Math.random() * 255
-              })`,
-            });
+// we will always get the engine as parameter for any use.
+engine.update = (_engine) => {
+  if (input.mouse.click) {
+    const p1 = new Point({
+      x: input.mouse.position.x,
+      y: input.mouse.position.y,
+      radius: 6,
+      color: `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${
+        Math.random() * 255
+      })`,
+    });
 
-            renderer.addObject(p1);
-          }
-        };
+    // this is object specific update method, it could be conditional as well.
+    p1.update = () => {
+      p1.options.radius = (p1.options.radius ?? 0) + 0.1;
+    };
+
+    renderer.addObject(p1);
+  }
+};
+
 
       </code></pre>
     </div>

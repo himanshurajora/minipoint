@@ -1,0 +1,12 @@
+# First load nvm and provide access to the nvm command.
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+
+# Use the nvm ls command to detect the version being used.
+export NVM_DIR="$HOME/.nvm"
+a=$(nvm ls | grep 'node')
+b=${a#*(-> }
+v=${b%%[)| ]*}
+
+# Export the current version in your path for husky to find.
+export PATH="$NVM_DIR/versions/node/$v/bin:$PATH"
