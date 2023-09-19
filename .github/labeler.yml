@@ -30,3 +30,6 @@ Types:
 
 Packages:
   - '**/**/package*.json'
+
+Codeowners:
+  - '.github/CODEOWNERS'
