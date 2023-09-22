@@ -71,5 +71,50 @@ export class MouseInput {
 }
 
 export class KeyBoardInput {
-  constructor(_engine: Engine) {}
+  currentDownKey: string = '';
+  currentUpKey: string = '';
+  currentPressedKey: string = '';
+  shiftKey?: boolean;
+  altKey?: boolean;
+  ctrlKey?: boolean;
+
+  engine: Engine;
+
+  constructor(engine: Engine) {
+    this.engine = engine;
+    window.addEventListener('keydown', (event) => {
+      this.currentDownKey = this.getKey(event.key);
+      this.currentUpKey = '';
+      this.altKey = event.altKey;
+      this.shiftKey = event.shiftKey;
+      this.ctrlKey = event.ctrlKey;
+    });
+
+    window.addEventListener('keypress', (event) => {
+      this.currentDownKey = this.getKey(event.key);
+      this.currentUpKey = '';
+      this.altKey = event.altKey;
+      this.shiftKey = event.shiftKey;
+      this.ctrlKey = event.ctrlKey;
+    });
+
+    window.addEventListener('keyup', (event) => {
+      this.altKey = event.altKey;
+      this.shiftKey = event.shiftKey;
+      this.ctrlKey = event.ctrlKey;
+      this.currentUpKey = this.getKey(event.key);
+      this.currentDownKey = '';
+      this.currentPressedKey = '';
+    });
+  }
+
+  getKey(key: string) {
+    if (!key) return '';
+
+    if (this.engine.options.engineOptions?.preserveKeyboardInputCase) {
+      return key;
+    }
+
+    return key.toLowerCase();
+  }
 }

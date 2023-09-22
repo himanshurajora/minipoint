@@ -56,8 +56,8 @@ export class Engine {
     // the initial position is calculated based on scrolled window.
     // otherwise, the position may be unexpected
     this.position = new Vector(x - window.scrollX, y - -window.scrollY);
-    this.width = this.canvas.width;
-    this.height = this.canvas.height;
+    this.width = this.options.engineOptions?.width!;
+    this.height = this.options.engineOptions?.height!;
     this.canvas.style.border = options.engineOptions!.border!;
     this.canvas.style.background = options.engineOptions!.bg!;
     this.canvas.style.width = options.engineOptions!.width!.toString() + 'px';
@@ -101,5 +101,6 @@ export class Engine {
   resetEvent() {
     this.input.mouse.click = false;
     this.input.mouse.move = false;
+    this.input.keyboard.currentUpKey = '';
   }
 }

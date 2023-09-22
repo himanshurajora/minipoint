@@ -18,6 +18,7 @@ export type EngineOptions = {
   // TODO: not yet decided
   engineOptions?: {
     clearEachFrame?: boolean;
+    preserveKeyboardInputCase?: boolean;
     border?: string;
     bg?: string;
     width?: number;

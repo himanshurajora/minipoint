@@ -12,6 +12,7 @@ export default defineConfig({
         colors: resolve(__dirname, 'colors/index.html'),
         mouse_inputs: resolve(__dirname, 'mouse-inputs/index.html'),
         update: resolve(__dirname, 'update/index.html'),
+        keyboard_inputs: resolve(__dirname, 'keyboard-inputs/index.html'),
       },
     },
   },
