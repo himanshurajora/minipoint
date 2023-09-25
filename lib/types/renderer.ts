@@ -17,5 +17,5 @@ export abstract class BaseRenderer {
     this.context = context;
     this.objects = [];
   }
-  abstract render(): void;
+  abstract render(deltaTime: number): void;
 }

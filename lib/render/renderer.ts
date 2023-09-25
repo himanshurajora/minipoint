@@ -17,9 +17,9 @@ export class Renderer extends BaseRenderer {
     this.engine = engine;
   }
 
-  render() {
+  render(deltaTime: number) {
     forEach(this.objects, (object) => {
-      object.checkDrawConditionAndDraw();
+      object.checkDrawConditionAndDraw(deltaTime);
     });
   }
 

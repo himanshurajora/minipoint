@@ -2,7 +2,7 @@ import { Renderer } from '../render/renderer';
 
 export interface BaseObjectInterface<T = unknown> {
   // draw: () => T;
-  checkDrawConditionAndDraw: () => T;
+  checkDrawConditionAndDraw: (deltaTime: number) => T;
   /**
    * A Unique Id that will help us identify each object in the Engine
    */
