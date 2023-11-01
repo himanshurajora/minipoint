@@ -4,10 +4,10 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: 
+    branches:
       - 'main'
-    paths: 
-      - 'examples/**'
+    paths:
+      - 'docs/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -38,15 +38,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-      - run: npm install && cd examples && npm install
-      - run: cd examples && npm run build
+      - run: npm install && cd docs && npm install
+      - run: cd docs && npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload the frontend digest
-          path: 'examples/dist'
+          path: 'docs/build'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2

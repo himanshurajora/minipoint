@@ -1,0 +1,38 @@
+---
+slug: minipoint-example
+title: Minipoint Example
+authors: [himanshurajora]
+tags: [docusaurus]
+date: 11-02-2023
+---
+
+import CanvasComponent from '@site/src/components/canvas';
+
+:::tip
+
+Miniponint is easy to use, let's check an example
+
+:::
+
+```js title="simple-red-point.js"
+import { Engine } from 'minipoint';
+
+const canvas = document.getElementById('canvas');
+
+let engine = new Engine(canvas);
+
+const point = engine.renderer.point({
+  x: 100,
+  y: 100,
+  color: 'red',
+  radius: 20,
+});
+
+let speedX = 0.1;
+let speedY = 0.1;
+
+engine.update = (engine) => {
+  point.options.x += speedX;
+  point.options.y += speedY;
+};
+```

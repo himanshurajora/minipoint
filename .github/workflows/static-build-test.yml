@@ -5,7 +5,7 @@ on:
   # Runs on pushes targeting the default branch
   pull_request:
     paths:
-      - 'examples/**' 
+      - 'docs/**'
 
 jobs:
   # Single deploy job since we're just deploying
@@ -18,5 +18,5 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-      - run: npm install && cd examples && npm install
-      - run: cd examples && npm run build
+      - run: npm install && cd docs && npm install
+      - run: cd docs && npm run build
