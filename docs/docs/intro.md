@@ -3,9 +3,9 @@ sidebar_position: 1
 title: What is Minipoint?
 ---
 
-# What is Minipoint
+A 2d Vector graphics library for beginners
 
-```bash
+```npm title="minipoint's ascii art"
 _       _             _            
 (_)     (_)           (_)      _    
 ____  _ ____  _ ____   ___  _ ____ | |_  
