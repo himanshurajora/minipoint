@@ -28,16 +28,16 @@ export abstract class BaseObject<T, K> implements BaseObjectInterface {
     this.renderer.addObject(this);
     this.context = this.renderer.context;
     this.start(this.renderer.engine);
-    this.checkDrawConditionAndDraw();
+    this.checkDrawConditionAndDraw(0);
   }
 
   abstract draw(): K;
 
-  update: (engine: Engine) => void = (_engine: Engine) => {};
+  update: (engine: Engine, deltaTime: number) => void = (_engine: Engine) => {};
   start: (engine: Engine) => void = (_engine: Engine) => {};
 
-  checkDrawConditionAndDraw() {
-    this.update(this.renderer.engine);
+  checkDrawConditionAndDraw(deltaTime: number) {
+    this.update(this.renderer.engine, deltaTime);
     if (this.options.show) {
       this.draw();
     }

@@ -74,13 +74,19 @@ export class Engine {
     this.input = new Input(this);
     this.start(this);
 
+    let lowLimit = 1;
+    let lastRenderTime = Date.now();
+    let deltaTime = 1;
     const render = () => {
-      this.update(this);
+      if (deltaTime < lowLimit) deltaTime = lowLimit;
+      this.update(this, deltaTime);
       if (options.engineOptions!.clearEachFrame) {
         this.context?.clearRect(0, 0, this.width, this.height);
       }
-      this.renderer.render();
+      this.renderer.render(deltaTime);
       this.resetEvent();
+      deltaTime = Date.now() - lastRenderTime;
+      lastRenderTime = Date.now();
       requestAnimationFrame(render);
     };
 
@@ -94,8 +100,12 @@ export class Engine {
     window.MiniPointDefaultRenderer = this.renderer;
   }
 
-  update: (engine: Engine) => void = (_engine: Engine) => {};
-  start: (engine: Engine) => void = (_engine: Engine) => {};
+  update: (engine: Engine, deltaTime: number) => void = (
+    _engine: Engine,
+    _deltaTime: number,
+  ) => {};
+
+  start: (_engine: Engine) => void = (_engine: Engine) => {};
 
   // reset single frame events
   resetEvent() {

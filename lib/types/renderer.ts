@@ -11,11 +11,11 @@ import { BaseObjectInterface } from './shapes';
 
 export abstract class BaseRenderer {
   context: CanvasRenderingContext2D;
-  objects: BaseObjectInterface[];
+  objects: Record<string, BaseObjectInterface>;
 
   constructor(context: CanvasRenderingContext2D) {
     this.context = context;
-    this.objects = [];
+    this.objects = {};
   }
-  abstract render(): void;
+  abstract render(deltaTime: number): void;
 }
