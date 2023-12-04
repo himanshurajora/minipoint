@@ -1,4 +1,4 @@
-import { Engine, Point } from '../../lib';
+import { Engine } from '../../lib';
 
 const engine = new Engine(
   document.getElementById('canvas') as HTMLCanvasElement,
@@ -10,7 +10,7 @@ const engine = new Engine(
   },
 );
 
-const { renderer, input } = engine;
+const { renderer } = engine;
 
 const random = () => {
   return Math.random();
@@ -22,17 +22,21 @@ document.getElementById('checkbox')?.addEventListener('change', (e) => {
   engine.options.engineOptions!.clearEachFrame = (e.target as any).checked;
 });
 
-engine.update = (engine, deltaTime) => {
-  const point = renderer.point({
-    show: true,
-    x: Math.random() * engine.width,
-    y: Math.random() * engine.height,
-    color: `rgb(${random() * 255}, ${random() * 255}, ${random() * 255})`,
-    radius: random() * 10,
-  });
+var lastTime = Date.now();
 
-  point.update = (_) => {
-    point.options.x += speed * deltaTime;
-    point.options.x += speed * deltaTime;
-  };
+engine.update = (engine, deltaTime) => {
+  var currentTime = Date.now();
+  if (currentTime - lastTime > 50) {
+    const point = renderer.point({
+      show: true,
+      x: Math.random() * engine.width,
+      y: Math.random() * engine.height,
+      color: `rgb(${random() * 255}, ${random() * 255}, ${random() * 255})`,
+      radius: random() * 10,
+    });
+    setTimeout(() => {
+      renderer.removeObject(point);
+    }, 200);
+    lastTime = Date.now();
+  }
 };

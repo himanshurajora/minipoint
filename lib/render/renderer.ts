@@ -1,4 +1,4 @@
-import { forEach } from 'lodash';
+import _, { forEach } from 'lodash';
 import { DefaultPointOptions } from '../constants';
 import { BaseObjectInterface, BaseRenderer, PointOptions } from '../types';
 import { Point } from './objects';
@@ -19,7 +19,9 @@ export class Renderer extends BaseRenderer {
 
   render(deltaTime: number) {
     forEach(this.objects, (object) => {
-      object.checkDrawConditionAndDraw(deltaTime);
+      if (object) {
+        object.checkDrawConditionAndDraw(deltaTime);
+      }
     });
   }
 
@@ -29,15 +31,23 @@ export class Renderer extends BaseRenderer {
    * @param {BaseObjectInterface<T>} object
    * @returns
    */
-  addObject<T>(object: T): T {
-    this.objects.push(object as BaseObjectInterface<T>);
+  addObject<T extends BaseObjectInterface>(object: T): T {
+    this.objects[object.id] = object as BaseObjectInterface<T>;
     (object as BaseObjectInterface<T>).renderer = this;
     return object;
   }
 
+  removeObject<T extends BaseObjectInterface>(object: T) {
+    delete this.objects[object.id];
+  }
+
+  getObject(id: string) {
+    return this.objects[id];
+  }
+
   point(options: PointOptions = DefaultPointOptions) {
     const point = new Point(options, this);
-    this.objects.push(point);
+    this.objects[point.id] = point;
     return point;
   }
 }

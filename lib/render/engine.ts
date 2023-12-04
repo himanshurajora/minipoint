@@ -76,16 +76,16 @@ export class Engine {
 
     let lowLimit = 1;
     let lastRenderTime = Date.now();
+    let deltaTime = 1;
     const render = () => {
-      let deltaTime = Date.now() - lastRenderTime;
       if (deltaTime < lowLimit) deltaTime = lowLimit;
-
       this.update(this, deltaTime);
       if (options.engineOptions!.clearEachFrame) {
         this.context?.clearRect(0, 0, this.width, this.height);
       }
       this.renderer.render(deltaTime);
       this.resetEvent();
+      deltaTime = Date.now() - lastRenderTime;
       lastRenderTime = Date.now();
       requestAnimationFrame(render);
     };
@@ -104,7 +104,8 @@ export class Engine {
     _engine: Engine,
     _deltaTime: number,
   ) => {};
-  start: (engine: Engine) => void = (_engine: Engine) => {};
+
+  start: (_engine: Engine) => void = (_engine: Engine) => {};
 
   // reset single frame events
   resetEvent() {

@@ -6,7 +6,7 @@ export interface BaseObjectInterface<T = unknown> {
   /**
    * A Unique Id that will help us identify each object in the Engine
    */
-  id?: string;
+  id: string;
   renderer: Renderer;
 }
 
