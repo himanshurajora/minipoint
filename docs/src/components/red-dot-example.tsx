@@ -1,32 +1,45 @@
-import React, { useRef, useEffect } from 'react';
-import { Engine } from 'minipoint';
+import BrowserOnly from '@docusaurus/BrowserOnly';
+import useIsBrowser from '@docusaurus/useIsBrowser';
+
 const RedDotExample = () => {
-  const canvasRef = useRef<HTMLCanvasElement>();
+  return (
+    (
+      <BrowserOnly fallback={<>Canvas PlaceHolder</>}>
+        {() => {
+          const useEffect = require('react').useEffect;
+          const useRef = require('react').useRef;
+          const Engine = require('minipoint').Engine;
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
+          const canvasRef = useRef();
 
-    let engine = new Engine(canvas);
+          useEffect(() => {
+            const canvas = canvasRef.current;
 
-    const point = engine.renderer.point({
-      x: 100,
-      y: 100,
-      color: 'red',
-      radius: 20,
-    });
+            let engine = new Engine(canvas);
 
-    let speedX = 0.1;
-    let speedY = 0.1;
+            const point = engine.renderer.point({
+              x: 100,
+              y: 100,
+              color: 'red',
+              radius: 20,
+            });
 
-    engine.update = (engine) => {
-      point.options.x += speedX;
-      point.options.y += speedY;
-    };
+            let speedX = 0.1;
+            let speedY = 0.1;
 
-    // Add your canvas drawing code here
-  }, []);
+            engine.update = (engine) => {
+              point.options.x += speedX;
+              point.options.y += speedY;
+            };
 
-  return <canvas ref={canvasRef}></canvas>;
+            // Add your canvas drawing code here
+          }, []);
+
+          return <canvas ref={canvasRef}></canvas>;
+        }}
+      </BrowserOnly>
+    )
+  );
 };
 
 export default RedDotExample;
