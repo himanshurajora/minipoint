@@ -1,35 +1,35 @@
 Examples:
-  - 'examples/**'
+  - any: ["examples/**"]
 
 Library:
-  - 'lib/**'
+  - all: ["lib/**"]
 
 ReadMe:
-  - 'readme.md'
+  - all: ["readme.md"]
 
 CodeEditor:
-  - '.vscode/**'
+  - all: [".vscode/**"]
 
 Tests:
-  - any: ['test/**', '**/*.test.ts', '**/*.test.js']
+  - any: ["test/**", "**/*.test.ts", "**/*.test.js"]
 
 Core:
-  - 'lib/core/**'
+  - all: ["lib/core/**"]
 
 CoreWithTests:
-  - all: ['lib/core/**', 'test/**']
+  - all: ["lib/core/**", "test/**"]
 
 Actions:
-  - '.github/**'
+  - all: [".github/**"]
 
 Docs:
-  - 'Docs/**'
+  - all: ["Docs/**"]
 
 Types:
-  - 'lib/types/**'
+  - all: ["lib/types/**"]
 
 Packages:
-  - '**/**/package*.json'
+  - all: ["**/**/package*.json"]
 
 Codeowners:
-  - '.github/CODEOWNERS'
+  - all: [".github/CODEOWNERS"]
