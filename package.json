@@ -1,6 +1,6 @@
 {
   "name": "minipoint",
-  "version": "0.0.3",
+  "version": "0.0.4-1",
   "description": "Play with points and learn the math behind everything",
   "main": "dist/index.js",
   "scripts": {
