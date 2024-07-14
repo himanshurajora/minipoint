@@ -74,24 +74,25 @@ export class Engine {
     this.input = new Input(this);
     this.start(this);
 
-    let lowLimit = 1;
-    let lastRenderTime = Date.now();
-    let deltaTime = 1;
-    const render = () => {
-      if (deltaTime < lowLimit) deltaTime = lowLimit;
+    let previousTimestamp = 0;
+    const render = (currentTimestamp: number) => {
+      const deltaTime = (currentTimestamp - previousTimestamp) / 1000;
+      previousTimestamp = currentTimestamp;
       this.update(this, deltaTime);
       if (options.engineOptions!.clearEachFrame) {
         this.context?.clearRect(0, 0, this.width, this.height);
       }
       this.renderer.render(deltaTime);
       this.resetEvent();
-      deltaTime = Date.now() - lastRenderTime;
-      lastRenderTime = Date.now();
       requestAnimationFrame(render);
     };
 
+
     this.renderer = new Renderer(this);
-    render();
+    requestAnimationFrame((timestamp) => {
+      previousTimestamp = timestamp;
+      requestAnimationFrame(render);
+    });
 
     // Set useful options to window
     // INFO: Make sure whenever new Engine is created it will overwrite the default
