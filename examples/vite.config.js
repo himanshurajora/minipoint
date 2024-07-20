@@ -13,7 +13,10 @@ export default defineConfig({
         mouse_inputs: resolve(__dirname, 'mouse-inputs/index.html'),
         update: resolve(__dirname, 'update/index.html'),
         keyboard_inputs: resolve(__dirname, 'keyboard-inputs/index.html'),
+        delta_time: resolve(__dirname, 'delta-time/index.html'),
+        line: resolve(__dirname, 'etc/line/index.html'),
       },
     },
   },
+  base: '/minipoint/',
 });

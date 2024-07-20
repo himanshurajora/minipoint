@@ -4,6 +4,7 @@ export * from './physics';
 export * from './render';
 export * from './common';
 export * from './input';
+export * from './plugins';
 // Simple things
 import * as MiniPoint from '.';
 console.log("%cWelcome! to minipoint. Let's Play...", 'color: green');

@@ -14,8 +14,8 @@ document.getElementById('max')?.addEventListener('change', (e) => {
 
 window.addEventListener('mousemove', (e: MouseEvent) => {
   if (!e.shiftKey) return;
-  while (renderer.objects.length > maxAmount) {
-    renderer.objects.shift();
+  while ((renderer.objects.length as unknown as number) > maxAmount) {
+    (renderer.objects as any).shift();
   }
 
   const p1 = new Point();
