@@ -29,9 +29,10 @@
     <div id="app">See how delta time works</div>
     <p>Upper Arrow to increase points and Lower Arrow to decrease points</p>
     <p>
-      Left Arrow to decrease the speed of the points and Right Arrow to increase the speed
+      Left Arrow to decrease the speed of the points and Right Arrow to increase
+      the speed
     </p>
-    
+
     <div class="main-area">
       <canvas id="canvas"></canvas>
       <pre><code class="language-javascript">
@@ -65,7 +66,7 @@ let points: Point[] = [];
 function createPoints() {
   points = [];
   let x = 0;
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i &lt; n; i++) {
     const point = new Point({
       x: random() * 30 + x,
       y: random() * engine.height,
