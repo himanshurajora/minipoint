@@ -14,6 +14,7 @@ export default defineConfig({
         update: resolve(__dirname, 'update/index.html'),
         keyboard_inputs: resolve(__dirname, 'keyboard-inputs/index.html'),
         delta_time: resolve(__dirname, 'delta-time/index.html'),
+        line: resolve(__dirname, 'etc/line/index.html'),
       },
     },
   },
