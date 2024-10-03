@@ -15,6 +15,7 @@ export default defineConfig({
         keyboard_inputs: resolve(__dirname, 'keyboard-inputs/index.html'),
         delta_time: resolve(__dirname, 'delta-time/index.html'),
         line: resolve(__dirname, 'etc/line/index.html'),
+        tennis: resolve(__dirname, 'etc/tennis-of-two/index.html'),
       },
     },
   },

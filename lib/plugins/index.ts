@@ -7,3 +7,4 @@
  */
 
 export * from './line';
+export * from './rectangle';

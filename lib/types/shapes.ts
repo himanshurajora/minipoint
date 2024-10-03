@@ -15,6 +15,7 @@ export type DrawableObjectOptions<T = unknown> = T & {
    * Weather to show the object or not
    */
   show?: boolean;
+  addToRenderer?: boolean;
 };
 
 export type PointOptions = DrawableObjectOptions<{

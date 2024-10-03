@@ -87,7 +87,6 @@ export class Engine {
       requestAnimationFrame(render);
     };
 
-
     this.renderer = new Renderer(this);
     requestAnimationFrame((timestamp) => {
       previousTimestamp = timestamp;

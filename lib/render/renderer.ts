@@ -17,7 +17,7 @@ export class Renderer extends BaseRenderer {
     this.engine = engine;
   }
 
-  render(deltaTime: number) {
+  public render(deltaTime: number) {
     forEach(this.objects, (object) => {
       if (object) {
         object.checkDrawConditionAndDraw(deltaTime);
@@ -31,23 +31,25 @@ export class Renderer extends BaseRenderer {
    * @param {BaseObjectInterface<T>} object
    * @returns
    */
-  addObject<T extends BaseObjectInterface>(object: T): T {
+  public addObject<T extends BaseObjectInterface>(object: T): T {
     this.objects[object.id] = object as BaseObjectInterface<T>;
     (object as BaseObjectInterface<T>).renderer = this;
     return object;
   }
 
-  removeObject<T extends BaseObjectInterface>(object: T) {
+  public removeObject<T extends BaseObjectInterface>(object: T) {
     delete this.objects[object.id];
   }
 
-  getObject(id: string) {
+  public getObject(id: string) {
     return this.objects[id];
   }
 
-  point(options: PointOptions = DefaultPointOptions) {
-    const point = new Point(options, this);
-    this.objects[point.id] = point;
-    return point;
+  public point(point: PointOptions | Point = DefaultPointOptions) {
+    if (point instanceof Point) {
+      return this.addObject(point);
+    }
+    const _point = new Point(point, this);
+    return this.addObject(_point);
   }
 }

@@ -9,6 +9,8 @@ export const DefaultPointOptions: PointOptions = {
   x: 0,
   y: 0,
   radius: 5,
+  // @deprecated I don't know why this is here
+  addToRenderer: false,
 };
 
 export const DefaultCanvasOptions = {

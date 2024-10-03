@@ -5,26 +5,78 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <title>
       MiniPoint - The right 2d graphics library for your experiments
     </title>
   </head>
   <body>
-    <div id="app">
-      <h1>Welcome To MiniPoint</h1>
+    <div
+      id="app"
+      class="m-auto w-full flex flex-col items-center justify-center"
+    >
+      <h1 class="text-2xl">Welcome To MiniPoint</h1>
       <h2>We've got examples for you</h2>
+      <div class="divider"></div>
+      <h2>Simple Ones</h2>
+      <ul class="flex justify-center flex-wrap gap-4 sm:w-1/2 my-5 w-full">
+        <li>
+          <a href="/minipoint/point/" class="link btn text-green-300">Point</a>
+        </li>
+        <li>
+          <a href="/minipoint/drawing/" class="link btn text-green-300"
+            >Drawing</a
+          >
+        </li>
+        <li>
+          <a href="/minipoint/colors/" class="link btn text-green-300"
+            >Colors</a
+          >
+        </li>
+        <li>
+          <a href="/minipoint/mouse-inputs/" class="link btn text-green-300"
+            >Mouse Inputs</a
+          >
+        </li>
+        <li>
+          <a href="/minipoint/keyboard-inputs/" class="link btn text-green-300"
+            >Keyboard Inputs</a
+          >
+        </li>
+        <li>
+          <a href="/minipoint/update/" class="link btn text-green-300"
+            >Update</a
+          >
+        </li>
+        <li>
+          <a href="/minipoint/delta-time/" class="link btn text-green-300"
+            >Delta Time</a
+          >
+        </li>
+        <li>
+          <a href="/minipoint/etc/line/" class="link btn text-green-300"
+            >Line</a
+          >
+        </li>
+      </ul>
+      <div class="divider"></div>
+      <h2>Better Ones</h2>
+      <ul class="flex justify-center flex-wrap gap-4 sm:w-1/2 my-5 w-full">
+        <li>
+          <a
+            href="/minipoint/etc/tennis-of-two/"
+            class="link btn text-green-300"
+            >Tennis of Two</a
+          >
+        </li>
+      </ul>
     </div>
-    <ul>
-      <li><a href="/minipoint/point/">Point</a></li>
-      <li><a href="/minipoint/drawing/">Drawing</a></li>
-      <li><a href="/minipoint/colors/">Colors</a></li>
-      <li><a href="/minipoint/mouse-inputs/">Mouse Inputs</a></li>
-      <li><a href="/minipoint/keyboard-inputs/">Keyboard Inputs</a></li>
-      <li><a href="/minipoint/update/">Update</a></li>
-      <li><a href="/minipoint/delta-time/">Delta Time</a></li>
-      <li><a href="/minipoint/etc/line/">Line</a></li>
-    </ul>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
