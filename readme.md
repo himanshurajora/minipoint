@@ -29,6 +29,3 @@ A 2d Graphics Library spatially for Points/Vectors.
     <img src="https://contrib.rocks/image?repo=himanshurajora/minipoint&&max=1000" />
   </a>
 </div>
-
-  
-**Happy Coding 💻 and we look forward to your contributions during **Hacktoberfest 2024**! 🎃**
