@@ -19,5 +19,5 @@ export default defineConfig({
       },
     },
   },
-  base: '/minipoint/',
+  base: '/',
 });
