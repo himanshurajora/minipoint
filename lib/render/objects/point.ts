@@ -10,13 +10,24 @@ export class Point extends BaseObject<PointOptions, Point> {
     options: PointOptions = DefaultPointOptions,
     renderer?: Renderer,
   ) {
-    // base class will de
+    // base class will handle defaults
     options = {
       ...DefaultPointOptions,
       ...options,
     };
 
     super(options, renderer);
+  }
+
+  override getCenter(): { x: number; y: number } {
+    return { x: this.options.x, y: this.options.y };
+  }
+
+  override containsPoint(px: number, py: number): boolean {
+    const dx = px - this.options.x;
+    const dy = py - this.options.y;
+    const r = this.options.radius ?? 5;
+    return dx * dx + dy * dy <= r * r;
   }
 
   draw() {

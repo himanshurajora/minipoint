@@ -8,3 +8,11 @@
 
 export * from './line';
 export * from './rectangle';
+export * from './circle';
+export * from './ellipse';
+export * from './triangle';
+export * from './polygon';
+export * from './arc';
+export * from './text';
+export * from './sprite';
+export * from './path';

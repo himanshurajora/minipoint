@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Physics Playground - Minipoint</title>
+    <link rel="stylesheet" href="../public/styles.css">
+    <style>
+        .info-panel {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #0f0;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 11px;
+            border: 1px solid #0f0;
+            z-index: 100;
+            max-width: 300px;
+        }
+        canvas {
+            display: block;
+            background: linear-gradient(135deg, #161627, #0f0f1e);
+        }
+        .controls {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #0f0;
+            padding: 10px;
+            border: 1px solid #0f0;
+            font-family: monospace;
+            font-size: 10px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div class="info-panel">
+        <div style="color: #0f0; margin-bottom: 10px;">PHYSICS PLAYGROUND</div>
+        <div id="info" style="font-size: 10px; line-height: 1.6;"></div>
+    </div>
+    <div class="controls">
+        <div style="margin-bottom: 8px;">CONTROLS:</div>
+        <div>SPACE: Create Ball</div>
+        <div>C: Create Cube</div>
+        <div>P: Pause/Resume</div>
+        <div>R: Reset Scene</div>
+        <div>Drag: Throw Objects</div>
+    </div>
+    <canvas id="canvas"></canvas>
+    <script type="module" src="script.ts"></script>
+</body>
+</html>

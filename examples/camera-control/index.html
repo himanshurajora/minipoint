@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Controls - Minipoint</title>
+    <link rel="stylesheet" href="../public/styles.css">
+    <style>
+        .info-panel {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #0f0;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            border: 1px solid #0f0;
+            z-index: 100;
+        }
+        canvas {
+            display: block;
+            background: #1a1a1e;
+        }
+    </style>
+</head>
+<body>
+    <div class="info-panel">
+        <div style="color: #0f0; margin-bottom: 10px;">CAMERA CONTROLS</div>
+        <div style="font-size: 11px; line-height: 1.6;">
+            <div>Arrow Keys: Pan</div>
+            <div>Z/X: Zoom In/Out</div>
+            <div>R/T: Rotate</div>
+            <div id="info" style="margin-top: 10px; font-size: 10px;"></div>
+        </div>
+    </div>
+    <canvas id="canvas"></canvas>
+    <script type="module" src="script.ts"></script>
+</body>
+</html>

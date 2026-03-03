@@ -14,14 +14,23 @@ document.getElementById('max')?.addEventListener('change', (e) => {
 
 window.addEventListener('mousemove', (e: MouseEvent) => {
   if (!e.shiftKey) return;
-  while ((renderer.objects.length as unknown as number) > maxAmount) {
-    (renderer.objects as any).shift();
+
+  // Remove excess objects when over max
+  const objectKeys = Object.keys(renderer.objects);
+  while (objectKeys.length > maxAmount) {
+    const oldestKey = objectKeys.shift();
+    if (oldestKey) {
+      const obj = renderer.objects[oldestKey];
+      if (obj) renderer.removeObject(obj);
+    }
   }
 
-  const p1 = new Point();
-  p1.options.x = e.clientX - canvasX;
-  p1.options.y = e.clientY - canvasY;
-  p1.options.radius = 1;
+  const p1 = new Point({
+    x: e.clientX - canvasX,
+    y: e.clientY - canvasY,
+    radius: 1,
+    addToRenderer: true,
+  });
 
   renderer.addObject(p1);
 });

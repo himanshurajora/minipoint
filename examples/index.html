@@ -1,31 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minipoint Examples Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #161627 100%);
+            color: #e0e0e0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #00ff00;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
+        .subtitle {
+            text-align: center;
+            color: #0f0;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .example-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #0f0;
+            border-radius: 8px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        .example-card:hover {
+            background: rgba(0, 255, 0, 0.1);
+            border-color: #00ff00;
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+        }
+        .example-card h3 {
+            color: #00ff00;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        .example-card .number {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        .example-card p {
+            color: #b0b0b0;
+            font-size: 0.95em;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .example-card .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .feature-tag {
+            background: rgba(0, 255, 0, 0.1);
+            color: #0f0;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            border: 1px solid rgba(0, 255, 0, 0.3);
+        }
+        .example-card a {
+            display: inline-block;
+            color: #00ff00;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border: 1px solid #0f0;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        .example-card a:hover {
+            background: #0f0;
+            color: #000;
+        }
+        .info-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .info-section h2 {
+            color: #0f0;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .info-section p {
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        .code-block {
+            background: #1a1a2e;
+            border-left: 3px solid #0f0;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            color: #0f0;
+        }
+        .original-examples {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+        }
+        .original-examples h3 {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        .original-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        .original-link {
+            background: rgba(100, 100, 100, 0.2);
+            border: 1px solid #555;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            color: #999;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .original-link:hover {
+            background: rgba(100, 100, 100, 0.4);
+            border-color: #777;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Minipoint Examples Gallery</h1>
+        <p class="subtitle">Comprehensive demonstrations of all library features</p>
 
-    <title>
-      MiniPoint - The right 2d graphics library for your experiments
-    </title>
-  </head>
-  <body>
-    <div
-      id="app"
-      class="m-auto w-full flex flex-col items-center justify-center"
-    >
-      <h1 class="text-2xl">Welcome To MiniPoint</h1>
-      <h2>We've got examples for you</h2>
-      <div class="divider"></div>
-      <h2>Simple Ones</h2>
-      <ul class="flex justify-center flex-wrap gap-4 sm:w-1/2 my-5 w-full">
+        <div class="info-section">
+            <h2>Welcome to Minipoint Examples</h2>
+            <p>
+                Minipoint is a powerful 2D canvas graphics library with physics, collision detection, animation,
+                and complete rendering capabilities. This gallery showcases 10 comprehensive examples covering every
+                feature of the library.
+            </p>
+            <div class="code-block">
+npm run dev   # Start development server<br/>
+Then select any example below to explore
+            </div>
+        </div>
+
+        <div class="examples-grid" id="examplesGrid"></div>
+
+        <div class="info-section original-examples">
+            <h3>Original Examples</h3>
+            <p>The library also includes additional original examples:</p>
+            <div class="original-grid">
+                <a href="point/" class="original-link">Point</a>
+                <a href="drawing/" class="original-link">Drawing</a>
+                <a href="colors/" class="original-link">Colors</a>
+                <a href="mouse-inputs/" class="original-link">Mouse</a>
+                <a href="keyboard-inputs/" class="original-link">Keyboard</a>
+                <a href="delta-time/" class="original-link">Delta Time</a>
+                <a href="update/" class="original-link">Update</a>
+                <a href="etc/line/" class="original-link">Line</a>
+                <a href="etc/tennis-of-two/" class="original-link">Tennis</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const examples = [
+            {
+                name: 'Vectors Math',
+                folder: 'vectors-demo',
+                description: 'Learn vector operations: magnitude, normalization, rotation, dot/cross products, distance, and lerp.',
+                features: ['Vectors', 'Math', 'Visualization']
+            },
+            {
+                name: 'Physics Gravity',
+                folder: 'physics-gravity',
+                description: 'Interactive physics simulation with gravity, wind forces, bouncing, and collision response.',
+                features: ['Physics', 'Gravity', 'Interaction']
+            },
+            {
+                name: 'Collision Detection',
+                folder: 'collision-detection',
+                description: 'Visual collision detection with circles, rectangles, triangles, and polygons.',
+                features: ['Collision', 'Geometry', 'Detection']
+            },
+            {
+                name: 'Shapes Showcase',
+                folder: 'shapes-showcase',
+                description: 'All shape types with animations: circles, rectangles, polygons, arcs, text, and more.',
+                features: ['Shapes', 'Rendering', 'Animation']
+            },
+            {
+                name: 'Animation & Tweening',
+                folder: 'animation-tween',
+                description: 'Easing functions and animation system with 20+ professional easing curves.',
+                features: ['Animation', 'Easing', 'Tweening']
+            },
+            {
+                name: 'Camera Controls',
+                folder: 'camera-control',
+                description: 'Pan, zoom, and rotate camera system with coordinate transformations.',
+                features: ['Camera', 'Transform', 'Navigation']
+            },
+            {
+                name: 'Color Utilities',
+                folder: 'color-palette',
+                description: 'Color parsing, manipulation, conversion between formats, and analysis.',
+                features: ['Colors', 'HSL', 'RGB']
+            },
+            {
+                name: 'Advanced Input',
+                folder: 'input-advanced',
+                description: 'Complete input handling: keyboard, mouse, drag, and interactive feedback.',
+                features: ['Input', 'Keyboard', 'Mouse']
+            },
+            {
+                name: 'Particle System',
+                folder: 'particle-system',
+                description: 'Dynamic particle effects with physics, gravity, and visual feedback.',
+                features: ['Particles', 'Effects', 'Physics']
+            },
+            {
+                name: 'Physics Playground',
+                folder: 'physics-playground',
+                description: 'Interactive physics sandbox with dragging, throwing, and collision visualization.',
+                features: ['Physics', 'Interactive', 'Sandbox']
+            }
+        ];
+
+        const grid = document.getElementById('examplesGrid');
+        examples.forEach((example, index) => {
+            const card = document.createElement('div');
+            card.className = 'example-card';
+            card.innerHTML = `
+                <div class="number">#${index + 1}</div>
+                <h3>${example.name}</h3>
+                <p>${example.description}</p>
+                <div class="features">
+                    ${example.features.map(f => `<span class="feature-tag">${f}</span>`).join('')}
+                </div>
+                <a href="${example.folder}/">Open Example →</a>
+            `;
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
         <li>
           <a href="/minipoint/point/" class="link btn text-green-300">Point</a>
         </li>

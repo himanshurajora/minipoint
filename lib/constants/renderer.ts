@@ -2,6 +2,12 @@ import { DrawableObjectOptions, PointOptions } from '../types';
 
 export const DefaultDrawableObjectOptions: DrawableObjectOptions = {
   show: true,
+  addToRenderer: true,
+  zIndex: 0,
+  rotation: 0,
+  scaleX: 1,
+  scaleY: 1,
+  opacity: 1,
 };
 
 export const DefaultPointOptions: PointOptions = {
@@ -9,8 +15,6 @@ export const DefaultPointOptions: PointOptions = {
   x: 0,
   y: 0,
   radius: 5,
-  // @deprecated I don't know why this is here
-  addToRenderer: false,
 };
 
 export const DefaultCanvasOptions = {
